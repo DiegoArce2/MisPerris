@@ -21,7 +21,17 @@
 
 
 </head>
+<script>
+function soloNumeros(e)
+        {
+        var keynum = window.event ? window.event.keyCode : e.which;
+        if ((keynum == 8) || (keynum == 46))
+        return true;
+         
+        return /\d/.test(String.fromCharCode(keynum));
+        }
 
+</script>
 <body style="background-size: cover;  background-size: 100%;background-image: url('{% static 'core/img/2.jpg' %}');  color: #ffffff; width: 100%; 
       height: 100%; margin-left: auto; position: absolute;  ">
     <nav class="navbar navbar-expand-lg navbar-light" style="background-color:#6DCCAA; margin:0px; ">
@@ -119,7 +129,7 @@
             <div class="form-row cold-md-2">
                 <div class="form-group col-md-6">
                     <label for="txtTelefono">Telefono</label>
-                    <input type="number" class="form-control" required	 name="txtTelefono" id="txtTelefono">
+                    <input type="number"  onkeypress="return soloNumeros(event);" class="form-control" required	 name="txtTelefono" id="txtTelefono">
                 </div>
 
                 <div class="form-group col-md-2">
