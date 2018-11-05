@@ -1,0 +1,171 @@
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #6DCCAA;
+    opacity:30;
+
+}
+
+li {
+    float: left;
+}
+.bordes-transparentes{
+    text-align:center; 	
+    background: aquamarine;
+    border: 1px solid rgba(0, 0, 0, 0.5);
+    padding: 10px 10px 10px 10px;
+    border-radius: 5px; 
+    top:45px;
+    left:10%;
+    width:250px;}
+li a {
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+
+li a:hover {
+    background-color: #88E35B;
+    text-decoration: none;
+
+}
+
+
+.general{
+    border: 0;
+    margin: 0;
+
+}
+
+.texto{
+
+}
+.textoM{
+ font-size: 70px;
+}
+@media only screen and (max-width: 980px) {
+    li {
+        float:none;
+    }
+    .logo{
+        float: end;
+    }
+}
+
+
+.RS{
+    background-color: #6DCCAA;
+    width: 100%;
+    height:40px;
+
+
+}
+#barras{
+    margin-left: 90%;
+}
+
+
+.show-large {
+    display: none;
+    .divIz{
+        float: none;
+
+    }
+
+}
+@media only screen and (min-width: 767px) {
+    .show-large {
+        display: block;
+    }
+    .show-mobile {
+        display: none;
+    }
+
+
+}
+#div{
+    background-color:#80CF89;
+}
+
+
+@media only screen and (max-width: 567px) {
+    .logo{
+        margin-left: 85px;
+    }
+
+
+}
+
+.texto {
+    font-size: 23px;
+}
+
+#barres{
+    background-color: #6DCCAA;
+
+}
+
+.show-medio {
+    display: none;
+}
+@media only screen and (min-width: 501px) and (max-width: 1014px) {
+
+    .show-large {
+        display: none
+    }
+    .show-mobile {
+        display: none;
+
+    }
+
+    .show-medio {
+        display: block;
+    }
+
+
+}
+
+/*--------------------------------------------------------------------------*/
+
+
+.gallery {
+    -webkit-column-count: 3;
+    -moz-column-count: 3;
+    column-count: 3;
+    -webkit-column-width: 33%;
+    -moz-column-width: 33%;
+    column-width: 33%; }
+.gallery .pics {
+    -webkit-transition: all 350ms ease;
+    transition: all 350ms ease; }
+.gallery .animation {
+    -webkit-transform: scale(1);
+    -ms-transform: scale(1);
+    transform: scale(1); }
+
+@media (max-width: 450px) {
+    .gallery {
+        -webkit-column-count: 1;
+        -moz-column-count: 1;
+        column-count: 1;
+        -webkit-column-width: 100%;
+        -moz-column-width: 100%;
+        column-width: 100%;
+    }
+}
+
+@media (max-width: 400px) {
+    .btn.filter {
+        padding-left: 1.1rem;
+        padding-right: 1.1rem;
+    }
+}
+.divIz{
+
+    height: 400px;
+    width: 50%;
+}

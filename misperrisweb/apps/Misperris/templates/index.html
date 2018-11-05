@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    {% load static %}
+        <link rel="stylesheet" href="{% static 'core/css/galeria.css' %}" crossorigin="anonymous">
+        <link rel="stylesheet" href="{% static 'core/css/style.css' %}" crossorigin="anonymous">
+
+
+</head>
+<body>
+ 
+    <nav class="navbar navbar-expand-lg navbar-light" style="background-color:#6DCCAA;">
+  <a class="navbar-brand" href="#"> {% load static %}<img  style="width:80%;" src="{% static 'core/img/logo.png' %}">             </a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+    <span  style="padding-rigth:0px;"class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarText">
+    <ul style="margin-left:8%; "class="navbar-nav mr-auto">
+      <li class="nav-item active">
+        <a class="nav-link" href="/" style="color:white;">Inicio<span class="sr-only"></span></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="" style="color:white;" >Quienes Somos</a>
+        
+      </li>
+      
+       <li class="nav-item">
+        <a class="nav-link" href="perros" style="color:white;" >Adoptar</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#" style="color:white;" >Contactos</a>
+      </li>
+      {% if admin %}
+      <li class="nav-item">
+        <a class="nav-link" href="administrar" style="color:white;">Administrar</a>
+      </li>
+      {% endif %}
+      <li class="nav-item">
+      {% if ingresado %}
+      <a class="nav-link" href="salir" style="color:white;" >Salir</a>
+
+      {% endif %}
+      {% if deslog %}
+              <a class="nav-link" href="/login" style="color:white;" >Ingresar</a>
+      {% endif %}
+      </li>
+    </ul>
+    
+  </div>
+</nav>
+<div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+  <ol class="carousel-indicators">
+    <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+    <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+    <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+  </ol>
+
+  <div class="carousel-inner">
+    <div class="carousel-item active">
+      <img class="d-block w-100" style="width: 100%; height: 500px" src="{% static 'core/img/perro.png' %}" alt="First slide">
+       <div style="background-color: rgba(0,0,0,0.5) ; border-radius: 50px;" class="carousel-caption d-none d-md-block">
+                            <h5 style="color: white;  margin:3px; ;" >Mis Perris</h5>
+                            <h6 style="color: white;">Encuentra un amigo</h6>
+                        </div>
+
+    </div>
+  {% for p in perritos %}
+  {{MEDIA_URL}}
+  {% load static %}
+  <div class="carousel-item">
+      <img class="d-block w-100"   style="width: 100%; height: 500px" src="../media/{{p.imagenPerro}}" alt="Second slide">
+         <div style="background-color: rgba(0,0,0,0.5) ; border-radius: 50px;" class="carousel-caption d-none d-md-block">
+                            <h5 style="color: white;  margin:3px; ;" >{{p.nombrePerro}}</h5>
+                            <h6 style="color: white;">{{p.descripcion}}</h6>
+                        </div>
+
+  </div>
+  {% endfor %}
+
+
+  
+      
+  <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="sr-only">Previous</span>
+  </a>
+  <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="sr-only">Next</span>
+  </a>
+    <div class="RS show-large">
+            <a style=" margin-top: 10px;  margin-left: 88%;
+               "> 
+                <img src="{% static 'core/img/facebook.png' %}" width="32" height="32" alt="facebook"/>
+
+            </a>
+            <a>
+                <img src=".{% static 'core/img/inst.png' %}" width="32" height="32" alt="facebook"/>
+
+            </a>
+            <a><img src="{% static 'core/img/Mail.png' %}" width="32" height="32" alt="facebook"/></a>
+
+        </div>
+
+        <div class="RS show-medio">
+            <a style="   margin-left: 45%; 
+               "> 
+                <img style="margin-top: 3px;" src="{% static 'core/img/facebook.png' %}" width="32" height="32" alt="facebook"/>
+
+            </a>
+            <a>
+                <img src="{% static 'core/img/inst.png' %}" width="32" height="32" alt="facebook"/>
+
+            </a>
+            <a><img src="{% static 'core/img/Mail.png' %} " width="32" height="32" alt="facebook"/></a>
+
+        </div>
+
+        <div class="RS show-mobile">
+            <a style="   margin-left: 36%;
+               "> 
+                <img src="{% static 'core/img/facebook.png' %}" width="32" height="32" alt="facebook"/>
+
+            </a>
+            <a>
+                <img src="{% static 'core/img/inst.png' %}" width="32" height="32" alt="facebook"/>
+
+            </a>
+            <a><img src="{% static 'core/img/inst.png' %}" width="32" height="32" alt="facebook"/></a>
+
+        </div>
+   <div class="divIz show-large" style=" background-color: #fff; float: right;">
+            <img style="margin-left: 2%; margin-top: 2%;" src="{% static 'core/img/crowfunding.jpg' %}" width="270" height="194" alt="crowfunding"/>
+            <h4 style="margin-left:13px;">CROWFUNDING</h4>
+            <p style="margin-left:3%; margin-bottom: 0px;">Financiamiento</p>
+            <h4 style="margin-top:-4px; margin-left: 3%;">_________</h4>
+            <p style="text-align: left; margin-left: 10px; ">Sigue nuestras redes sociales para informarle acerca de las diversas campañas y actividades que realizamos para obtener financiamiento para seguir ayudando</p>
+            <button id="btn" style=" margin-left: 2%;height: 35px; background-color: #ffffff; border-color:  #000;">Campañas</button>
+
+        </div>
+        <div class="divIz show-large" style=" background-color: #fff; float: left;">
+            <h1 style="text-align: right; margin-top:5px; margin-right: 20px; ">Rescate</h1>
+            <p style="text-align: right; margin-right:20px; margin-top:-12px; margin-bottom: 0px;" >Etapa Uno</p>
+            <h4 style="margin-left: 82%; margin-top: -4px;">_________</h4>
+            <p style="height:10px; size: 30px; text-align: right; margin-left: 50px; margin-right: 10px; ">Rescatamos perros en situacion de peligro y/o abandono. Los rehabilitamos y los preparamos para buscarles un hogar</p>
+            <img style="margin-top: 45px; float: right;  margin-right: 25px;" src="{% static 'core/img/rescate.jpg' %}" width="250" height="136" alt="rescate"/>
+        </div>     
+        <div class="show-mobile" style="background-color: #fff; height: 340px;">
+
+            <h1 style="text-align: right; margin-top:5px; margin-right: 20px; ">Rescate</h1>
+            <p style="text-align: right; margin-right:20px; margin-top:-12px; margin-bottom: 0px;" >Etapa Uno</p>
+            <h4 style="margin-left: 82%; margin-top: -4px;">_________</h4>
+            <p style="height:10px; size: 30px; text-align: right; margin-left: 20px; margin-right: 10px; ">Rescatamos perros en situacion de peligro y/o abandono. Los rehabilitamos y los preparamos para buscarles un hogar</p>
+            <img style="margin-top: 18%; float: right;  margin-right: 25px;" src="{% static 'core/img/rescate.jpg' %}" width="250" height="136" alt="rescate"/>
+        </div>
+
+
+        <div style="margin-top: 29px;" class="show-mobile" style=" background-color: #fff; float: right;">
+            <img style="margin-left: 2%; margin-top: 2%;" src="{% static 'core/img/crowfunding.jpg' %}" width="250" height="174" alt="crowfunding"/>
+            <h4 style="margin-left:13px;">CROWFUNDING</h4>
+            <p style="margin-left:3%; margin-bottom: 0px;">Financiamiento</p>
+            <h4 style="margin-top:-4px; margin-left: 3%;">_________</h4>
+            <p style="text-align: left; margin-left: 10px; ">Sigue nuestras redes sociales para informarle acerca de las diversas campañas y actividades que realizamos para obtener financiamiento para seguir ayudando</p>
+            <button  id="btn" style=" margin-left: 2%;height: 35px; background-color: #ffffff; border-color:  #000;">Campañas</button>
+
+        </div>
+       
+
+        <div class="show-medio" style="background-color: #fff; height: 340px;">
+
+            <h1 style="text-align: right; margin-top:5px; margin-right: 20px; ">Rescate</h1>
+            <p style="text-align: right; margin-right:20px; margin-top:-12px; margin-bottom: 0px;" >Etapa Uno</p>
+            <h4 style="margin-left: 82%; margin-top: -4px;">_________</h4>
+            <p style="height:10px; size: 30px; text-align: right; margin-left: 20px; margin-right: 10px; ">Rescatamos perros en situacion de peligro y/o abandono. Los rehabilitamos y los preparamos para buscarles un hogar</p>
+            <img style="margin-top: 10%; float: right;  margin-right: 25px;" src=".{% static 'core/img/rescate.jpg' %}" width="350" height="236" alt="rescate"/>
+        </div>
+
+
+        <div style="margin-top: 29px;" class="show-medio" style=" background-color: #fff; float: right;">
+            <img style="margin-left: 2%; margin-top: 2%;" src="{% static 'core/img/crowfunding.jpg' %}" width="250" height="174" alt="crowfunding"/>
+            <h4 style="margin-left:13px;">CROWFUNDING</h4>
+            <p style="margin-left:3%; margin-bottom: 0px;">Financiamiento</p>
+            <h4 style="margin-top:-4px; margin-left: 3%;">_________</h4>
+            <p style="text-align: left; margin-left: 10px; ">Sigue nuestras redes sociales para informarle acerca de las diversas campañas y actividades que realizamos para obtener financiamiento para seguir ayudando</p>
+            <button id="btn" style=" margin-left: 2%;height: 35px; background-color: #ffffff; border-color:  #000;">Campañas</button>
+        </div>
+<!--socialbar-->
+
+
+<!--Galeria-->
+
+
+
+       <div class="wrapper" style="width: 100%; margin-top:31%;background-color: #fff ">
+
+            {% for p in perritos %}
+               <div class="column">
+                    <a data-toggle="modal" data-target="#e{{p.name}}">
+                    <div class="inner" style="background-image: url('../media/{{p.imagenPerro}}')"></div>
+                    </a>
+                </div>
+              {% endfor %}
+               
+            
+           
+        </div>
+        {% for p in perritos  %}
+        <div class="modal fade" id="e{{p.name}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+                              <h3 style="text-align: center;"></h3>
+          
+
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+
+      </div>
+      <div class="modal-body">
+          
+          <img src="../media/{{p.imagenPerro}}" width="100%" height="450px"> <div class="" style="background-color: rgba(255,255,255,255.5); border-radius: 50px;">
+                        <h5 style="color: black;">{{p.nombrePerro}}</h5>
+                        <text>{{p.descripcion}}</text>
+                    </div> </img>
+
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+{% endfor %}
+ 
+        <div style="background-color:gray; height: 80px;">
+            <h6 style="margin-left: 10px; margin-top: 8px;">Desarrollo web y mobile</h6>
+        </div>
+        
+    </body>
+</body>
+</html>

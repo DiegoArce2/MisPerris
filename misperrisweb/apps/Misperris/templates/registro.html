@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <meta charset="UTF-8">
+            <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+{% load static %}
+        <title>Registro</title>
+
+
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+        <link rel="stylesheet" href="http://code.jquery.com/ui/1.10.1/themes/base/jquery-ui.css" />
+        <script src="http://code.jquery.com/jquery-1.9.1.js"></script>
+        <script src="http://code.jquery.com/ui/1.10.1/jquery-ui.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+        <link rel="stylesheet" href="{% static 'core/css/style.css' %}" crossorigin="anonymous">
+
+      
+        
+
+
+
+</head>
+
+<body style="background-size: cover;  background-size: 100%;background-image: url('{% static 'core/img/2.jpg' %}');  color: #ffffff; width: 100%; 
+      height: 100%; margin-left: auto; position: absolute;  ">
+    <nav class="navbar navbar-expand-lg navbar-light" style="background-color:#6DCCAA; margin:0px; ">
+  <a class="navbar-brand" href="#"> <img  style="width:80%;" src="{% static 'core/img/logo.png' %}">             </a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+    <span  style="padding-rigth:0px;"class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarText">
+    <ul style="margin-left:8%; "class="navbar-nav mr-auto">
+      <li class="nav-item active">
+        <a class="nav-link" href="/" style="color:white;">Inicio<span class="sr-only"></span></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#" style="color:white;" >Quienes Somos</a>
+        
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#" style="color:white;" >Servicios</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="perros" style="color:white;" >Adoptar</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#" style="color:white;" >Contactos</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/login" style="color:white;" >Ingresar</a>
+      </li>
+    </ul>
+    {% if existente %}
+    <script>alert("Usuario ya existente")</script>
+    {% endif %}
+  </div>
+</nav>
+    <div style="margin: 12px;">
+        <form id="formulario" method="POST"  name="formulario">
+              {% csrf_token %}
+
+            <div class="form-row">
+              <div class="form-group col-md-6">
+                    <label for="txtNombre">Nombre</label>
+                    <input type="text" class="form-control" id="txtNombre" required	 name="txtNombre" placeholder="Ingrese nombre">
+                </div>
+                <div class="form-group col-md-6">
+                    <label for="txtNombre">Usuario</label>
+                    <input type="text" class="form-control" id="txtUsuario"required	value="{{user}}"  name="txtUsuario" placeholder="Ingrese usuario">
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="txtPass">Contraseña</label>
+                <input type="password" class="form-control" id="txtPass" required	value="{{passa}}" name="txtPass" placeholder="Ingrese Contraseña">
+                {% if passin %}
+                <p1 style="color:white;">Las contraseñas deben ser iguales</p1>
+                {% endif %}
+            </div>
+            <div class="form-group">
+                <label for="txtPassconf">Confirmar Contraseña</label>
+                <input type= "password" class="form-control" id="txtPassconf" value="{{passa2}}" required	 name="txtPassconf" placeholder="Repita Contraseña">
+                {% if passin %}
+                <p1 style="color:white;">Las contraseñas deben ser iguales</p1>
+                {% endif %}
+            </div>
+            <div class="form-row">
+                <div class="form-group col-md-6">
+                   
+                    <label for="fecha">Fecha Nacimiento</label>
+                    <input max=""  min="" type="date" class="form-control" required	value="{{naci}}" id="fecha" name="fecha" placeholder="DD/MM/YYYY">
+                {% if edin %}
+                <p>Debe ser mayor de edad</p>
+                {% endif %}
+                </div>
+
+
+
+                <div class="form-group col-md-4">
+                    <label for="cboRegion">Region</label>
+                    <select id="cboRegion"  name="cboRegion" class="form-control">
+                         {% for re in  regiones %}
+                         <option value="{{re.name}}">{{re.descripcion}}</option>
+                        {% endfor %}
+                       
+                    </select>
+                </div>
+
+
+                <div class="form-group col-md-2">
+                    <label for="cboComuna">Comuna</label>
+                    <select id="cboComuna"  name="cboComuna" class="form-control">
+                        {% for re in  comu %}
+                         <option value="{{re.name}}">{{re.descripcion}}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+            </div>
+            <div class="form-row cold-md-2">
+                <div class="form-group col-md-6">
+                    <label for="txtTelefono">Telefono</label>
+                    <input type="number" class="form-control" required	 name="txtTelefono" id="txtTelefono">
+                </div>
+
+                <div class="form-group col-md-2">
+                    <label for="cboTipo">Tipo Vivienda</label>
+                    <select id="cboTipoVivienda" name="cboTipoVivienda" class="form-control">
+                    
+                        {% for re in  vivi %}
+                         <option value="{{re.name}}">{{re.descripcion}}</option>
+                        {% endfor %}
+                       
+
+                       
+                    </select>
+
+                </div>
+                <div class="form-group col-md-4">
+                    <label for="cboTipo">Sexo</label>
+                    <select id="cboSexo" name="cboSexo" class="form-control">
+                    
+                        {% for re in sex %}
+                         <option value="{{re.name}}">{{re.descripcion}}</option>
+                        {% endfor %}
+                       
+
+                       
+                    </select>
+
+                </div>
+                
+                <div class="form-group col-md-6">
+                    <label for="txtRut">Rut</label>
+                    <input type="text" class="form-control txtRut" id="txtRut"  name="txtRut" placeholder="Sin puntos ni guiones ">
+                {% if rutin %}
+                    <p>Rut Invalido</p>
+                {% endif %}
+                </div>
+                <div class="form-group col-md-6">
+                    <label for="txtRut">Correo</label>
+                    <input type="text"  required	class="form-control " id="txtCorreo"  name="txtCorreo" placeholder="ejemplo@gmail.com">
+                </div>
+                <button type="submit"  name="btnRegistro" id="btnRegistro" class="btn btn-primary">Registrar</button>    
+         {% if vacios %}
+        <h1 >Por favor complete todos los campos</h1>
+    {% endif%}
+    {% if conf %}
+    <script>alert("Agregado Correctamente");</script>
+    {% endif %}
+        </form>
+    </div>
+    {% if conf %}
+    <script>alert("Registrado Correctamente")</script>
+    {% endif %}
+</body>
+</html>
