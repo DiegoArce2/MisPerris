@@ -53,7 +53,7 @@
                     <img class="mb-4" src="{% static 'core/img/icono.png' %}" alt="" width="72" height="72">
                     <h1 class="h3 mb-3 font-weight-normal">Mis Perris</h1>
                     <h1 class="h3 mb-3 font-weight-normal">Ingrese Usuario</h1>
-                    <input type="text" id="txtEmail" name="txtEmail" class="form-control" placeholder="Email" required="" autofocus="">
+                    <input type="text" id="txtEmail" name="txtEmail" class="form-control" placeholder="Usuario" required="" autofocus="">
                     <h1></h1>
                     <input type="password" id="txtPass" name="txtPass" class="form-control" placeholder="Contraseña" required="">
                     <div class="checkbox mb-3">
@@ -67,7 +67,9 @@
         <h1 ></h1>
     {% endif%}
     {% if error %}
-        <h1 >Datos Invalido</h1>
+        <div class="alert alert-danger" role="alert">
+        Datos Invalidos
+        </div>
     {% endif%}
                 </form>
             </div>           
